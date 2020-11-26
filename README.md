@@ -24,6 +24,8 @@ There is no db for the products but the data/products.json could be be fetched f
 
 The example is not deployed to Vercel but it can be. There is a Stripe test account connected (my own) and it can easily be changed by following the below instructions and ensuring that the latest 08/2020 Api version is deployed.
 
+Todo: Fix the typing on the stripe session parameters. It works but gives an error at this point.
+
 The original example repo in GitHub:
 https://github.com/vercel/next.js/tree/canary/examples/with-stripe-typescript
 
