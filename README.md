@@ -18,7 +18,7 @@ Here the framework used are:
 - node.js
 - next.js (and the example written with typescript)
 - stripe.js
-- use-shopping-cart.js
+- use-shopping-cart.js (https://useshoppingcart.com)
 
 There is no db for the products but the data/products.json could be be fetched from f.ex. MongoDB or PostgreSQl.
 
