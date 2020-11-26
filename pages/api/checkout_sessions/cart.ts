@@ -14,7 +14,8 @@ import inventory from '../../../data/products.json'
 import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2020-03-02',
+  apiVersion: '2020-08-27',
+  //'2020-03-02',
 })
 
 export default async function handler(
@@ -32,15 +33,19 @@ export default async function handler(
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA'],
+          allowed_countries: ['US', 'CA', 'GB'],
         },
         line_items,
+        mode: 'payment',
+        allow_promotion_codes: true,
+        
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/use-shopping-cart`,
+        cancel_url: `${req.headers.origin}/use-shopping-cart`
       }
       const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
         params
       )
+      
 
       res.status(200).json(checkoutSession)
     } catch (err) {
