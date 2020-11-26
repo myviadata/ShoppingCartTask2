@@ -2,8 +2,9 @@ import { useShoppingCart } from 'use-shopping-cart'
 
 /**
  * CartItems.tsx
- * 
- *
+ * 26.11.2020 / RAM
+ * Cart item details in list of rows with add, remove, delete functions 
+ * Used in CartSummary
  */
 export function CartItems() {
   const {
@@ -14,55 +15,37 @@ export function CartItems() {
   } = useShoppingCart()
 
   const cart = []
-  // Note: Object.keys().map() takes 2x as long as a for-in loop
+  // Traverse through the details
   for (const sku in cartDetails) {
     const cartEntry = cartDetails[sku]
 
-    // all of your basic product data still exists (i.e. name, image, price)
+    // Product data details with add, remove one, remove all buttons
     cart.push(
       <article>
-        {/* image here */}
-        {/* name here */}
-        {/* formatted total price of that item */}
         <p>
         <div id="cartDetails">
             <div class="cartDetails1">
-            {cartEntry.name} total: {cartEntry.formattedValue} 
-                
-                {/* What if we want to remove one of the item... or add one */}  
+                {cartEntry.name} total: {cartEntry.formattedValue}   
             </div>
             <div class="cartDetails2">
-            Quantity: {cartEntry.quantity} 
-                
+                Quantity: {cartEntry.quantity}      
             </div>
             <div class="cartDetails3">
-
-                <button class="cartDetailsButton"
-                    onClick={() => decrementItem(cartEntry.sku)}
-                    aria-label={`Remove one ${cartEntry.name} from your cart`}
-                >
-                    -
+                {/* remove one product*/} 
+                <button class="cartDetailsButton" onClick={() => decrementItem(cartEntry.sku)}>
+                    <b>-</b>
                 </button>
-
-                
             </div>
             <div class="cartDetails4"> 
-
-                {/* What if we don't want this product at all */}
-                <button class="cartDetailsButton"
-                    onClick={() => incrementItem(cartEntry.sku)}
-                    aria-label={`Add one ${cartEntry.name} to your cart`}
-                >
-                    +
+                {/* add one product*/} 
+                <button class="cartDetailsButton" onClick={() => incrementItem(cartEntry.sku)}>
+                    <b>+</b>
                 </button>          
-                
             </div>
             <div class="cartDetails5">
-                <button class="cartDetailsButton"
-                    onClick={() => removeItem(cartEntry.sku)}
-                    aria-label={`Remove all ${cartEntry.name} from your cart`}
-                >
-                    Remove
+                {/* remove row */}
+                <button class="cartDetailsButton" onClick={() => removeItem(cartEntry.sku)}>
+                    delete
                 </button>
             </div>
         </div>

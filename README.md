@@ -1,3 +1,33 @@
+# The Shopping cart task
+1) Please build a shopping cart that supports the following operations:
+- Add items: included in example: CartSummary.tsx: use-shopping-cart
+- Remove items: included in example 
+- Clear items: included in example
+- Calculate totals: included in example
+- Print itemised receipt: added components/CartItems.tsx and included it to CartSummary.tsx to show the List of items in shopping cart. This is a mvp way of show a receipt before purchacing by using the browser printing.. The actual receipt is printable from Stripe after purchase.
+
+- Apply discount codes (each discount code can only be applied once): upgraded the Stripe.js api version to latest available in settings: node_monules/stripe/styles/lib.d.ts and pages/api/checkout_sessions/cart.ts
+
+- The discount codes can be used by inserting in the cart. Thereafter the Stripe.js will take care of the codes an apply the changes to prices later in the process.The codes are first inserted to stripe.js as described here: https://stripe.com/docs/payments/checkout/discounts
+
+2) Use Python or TypeScript if you're comfortable with either of those
+languages - but feel free to complete the task using a programming
+language/framework of your choice.
+Here the framework used are: 
+- react.js
+- node.js
+- next.js (and the example written with typescript)
+- stripe.js
+- use-shopping-cart.js
+
+There is no db for the products but the data/products.json could be be fetched from f.ex. MongoDB or PostgreSQl.
+
+The example is not deployed to Vercel but it can be. There is a Stripe test account connected (my own) and it can easily be changed by following the below instructions and ensuring that the latest 08/2020 Api version is deployed.
+
+The original example repo in GitHub:
+https://github.com/vercel/next.js/tree/canary/examples/with-stripe-typescript
+
+
 # Example using Stripe with TypeScript and react-stripe-js
 
 This is a full-stack TypeScript example using:
