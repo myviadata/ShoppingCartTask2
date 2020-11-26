@@ -28,6 +28,12 @@ export default async function handler(
       const cartItems = req.body
       const line_items = validateCartItems(inventory, cartItems)
       // Create Checkout Sessions from body params.
+      
+      // Change: 
+      // 26.11.2020 / RAM 
+      // Added allow_promotion_codes: true so that the promotion code can be filled in the Stripe interface.
+      // This required also the to update the apiVersion in above Stripe declaration and in the node.js properties.
+      //
       const params: Stripe.Checkout.SessionCreateParams = {
         submit_type: 'pay',
         payment_method_types: ['card'],
